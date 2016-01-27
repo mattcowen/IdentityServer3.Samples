@@ -66,6 +66,7 @@ namespace MVC_OWIN_Client
                                 id.AddClaim(new Claim("access_token", response.AccessToken));
                                 id.AddClaim(new Claim("expires_at", DateTime.Now.AddSeconds(response.ExpiresIn).ToLocalTime().ToString()));
                                 id.AddClaim(new Claim("refresh_token", response.RefreshToken));
+                                id.AddClaim(new Claim("matts", n.Code));
                                 id.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
 
                                 n.AuthenticationTicket = new AuthenticationTicket(

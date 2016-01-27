@@ -2,6 +2,7 @@
 using IdentityServer3.Core.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 
 namespace SelfHost.Config
 {
@@ -22,10 +23,23 @@ namespace SelfHost.Config
                     StandardScopes.OfflineAccess,
                     StandardScopes.RolesAlwaysInclude,
                     StandardScopes.AllClaims,
-
+                    
                     ////////////////////////
                     // resource scopes
                     ////////////////////////
+
+                    new Scope
+                    {
+                        Name = "matt",
+                        DisplayName = "Matts custom claims",
+                        Type = ScopeType.Resource,
+                        Emphasize = true,
+                        
+                        Claims = new List<ScopeClaim>
+                        {
+                            new ScopeClaim(ClaimTypes.NameIdentifier, true),
+                        }
+                    },
 
                     new Scope
                     {

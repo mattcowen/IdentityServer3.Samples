@@ -178,7 +178,8 @@ namespace SelfHost.Config
                         Constants.StandardScopes.Roles,
                         Constants.StandardScopes.OfflineAccess,
                         "read",
-                        "write"
+                        "write",
+                        "matt"
                     },
                     
                     ClientUri = "https://identityserver.io",
@@ -186,15 +187,19 @@ namespace SelfHost.Config
 
                     RequireConsent = false,
                     AccessTokenType = AccessTokenType.Reference,
-                    
+                    IdentityTokenLifetime = 60,
+                    AlwaysSendClientClaims = true,
+
                     RedirectUris = new List<string>
                     {
                         "http://localhost:2672/",
+                        "http://www.airflowenergy.local/admin/"
                     },
 
                     PostLogoutRedirectUris = new List<string>
                     {
-                        "http://localhost:2672/"
+                        "http://localhost:2672/",
+                        "http://www.airflowenergy.local/"
                     }
                 },
 

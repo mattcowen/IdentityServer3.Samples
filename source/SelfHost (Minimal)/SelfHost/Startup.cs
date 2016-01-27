@@ -1,4 +1,5 @@
-﻿using IdentityServer3.Core.Configuration;
+﻿using System;
+using IdentityServer3.Core.Configuration;
 using Owin;
 using SelfHost.Config;
 
@@ -17,10 +18,12 @@ namespace SelfHost
             var options = new IdentityServerOptions
             {
                 SiteName = "IdentityServer3 (self host)",
-
                 SigningCertificate = Certificate.Get(),
                 Factory = factory,
             };
+
+            options.AuthenticationOptions.CookieOptions.SlidingExpiration = true;
+            options.AuthenticationOptions.CookieOptions.ExpireTimeSpan = TimeSpan.FromMinutes(60);
 
             appBuilder.UseIdentityServer(options);
         }
